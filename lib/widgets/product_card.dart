@@ -10,10 +10,12 @@ class ProductCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 140,
+      margin: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
+        color: Color.fromARGB(255, 235, 227, 158),
         border: Border.all(
-          width: 2,
-          color: Colors.blue,
+          width: 1,
+          color: Colors.orange,
         ),
       ),
       child: Column(
@@ -56,6 +58,7 @@ class ProductCard extends StatelessWidget {
                     height: 35,
                     margin: EdgeInsets.symmetric(horizontal: 3),
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       border: Border.all(
                         width: 1,
                         color: Colors.purple,

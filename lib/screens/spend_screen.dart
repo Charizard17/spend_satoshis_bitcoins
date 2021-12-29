@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/product_card.dart';
+import '../widgets/product_list.dart';
 
 class SpendScreen extends StatelessWidget {
   @override
@@ -66,7 +66,7 @@ class SpendScreen extends StatelessWidget {
               thickness: 1,
               color: Colors.orange,
             ),
-            ProductCard(),
+            ProductList(),
           ],
         ),
       ),
