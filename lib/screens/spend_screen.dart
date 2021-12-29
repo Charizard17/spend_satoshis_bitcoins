@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/product_card.dart';
+
 class SpendScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,8 @@ class SpendScreen extends StatelessWidget {
                   CircleAvatar(
                     radius: 40,
                     backgroundColor: Colors.orange,
-                    backgroundImage: NetworkImage('https://personal-financial.com/wp-content/uploads/2020/06/The-day-the-true-false-Satoshi-Nakamoto-received-102-BTC.jpg'),
+                    backgroundImage: NetworkImage(
+                        'https://personal-financial.com/wp-content/uploads/2020/06/The-day-the-true-false-Satoshi-Nakamoto-received-102-BTC.jpg'),
                   ),
                   SizedBox(width: 20),
                   Expanded(
@@ -45,7 +48,10 @@ class SpendScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Icon(Icons.info),
+                            Icon(
+                              Icons.info,
+                              color: Colors.orange,
+                            ),
                           ],
                         ),
                         Text('Satoshi Nakamoto'),
@@ -56,6 +62,11 @@ class SpendScreen extends StatelessWidget {
                 ],
               ),
             ),
+            Divider(
+              thickness: 1,
+              color: Colors.orange,
+            ),
+            ProductCard(),
           ],
         ),
       ),
