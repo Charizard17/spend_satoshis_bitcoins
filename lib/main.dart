@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './screens/spend_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,11 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      home: SpendScreen(),
     );
   }
 }
