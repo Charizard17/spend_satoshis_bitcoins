@@ -1,9 +1,28 @@
 import 'package:flutter/material.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   const ProductCard({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  int _itemCount = 0;
+
+  _buyItem() {
+    setState(() {
+      ++_itemCount;
+    });
+  }
+
+  _sellItem() {
+    setState(() {
+      --_itemCount;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +70,7 @@ class ProductCard extends StatelessWidget {
                     fixedSize: Size(110, 30),
                   ),
                   child: Text('Sell'),
-                  onPressed: () {},
+                  onPressed: _itemCount > 0 ? _sellItem : null,
                 ),
                 Expanded(
                   child: Container(
@@ -65,7 +84,7 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     child: Center(
-                      child: Text('0'),
+                      child: Text('$_itemCount'),
                     ),
                   ),
                 ),
@@ -75,7 +94,7 @@ class ProductCard extends StatelessWidget {
                     fixedSize: Size(110, 30),
                   ),
                   child: Text('Buy'),
-                  onPressed: () {},
+                  onPressed: _buyItem,
                 ),
               ],
             ),
