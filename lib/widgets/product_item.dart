@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ProductCard extends StatefulWidget {
-  const ProductCard({
-    Key? key,
-  }) : super(key: key);
+class ProductItem extends StatefulWidget {
+  final String id;
+  final String title;
+  final String imageUrl;
+  ProductItem(this.id, this.title, this.imageUrl);
 
   @override
-  State<ProductCard> createState() => _ProductCardState();
+  State<ProductItem> createState() => _ProductItemState();
 }
 
-class _ProductCardState extends State<ProductCard> {
+class _ProductItemState extends State<ProductItem> {
   int _itemCount = 0;
 
   _buyItem() {

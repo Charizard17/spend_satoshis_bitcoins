@@ -4,10 +4,10 @@ class Product {
   final double price;
   final String imageUrl;
 
-  Product(
-    this.id,
-    this.title,
-    this.price,
-    this.imageUrl,
-  );
+  Product({
+    required this.id,
+    required this.title,
+    required this.price,
+    required this.imageUrl,
+  });
 }
