@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/product_list.dart';
+import '../widgets/menu_drawer.dart';
 
 class SpendScreen extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawerEnableOpenDragGesture: false,
+      endDrawer: MenuDrawer(),
       body: Padding(
         padding: const EdgeInsets.only(
           top: 40,
@@ -21,7 +27,13 @@ class SpendScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('₿1 = \$50,000'),
-                  Icon(Icons.menu),
+                  // Icon(Icons.menu),
+                  IconButton(
+                    icon: Icon(Icons.menu),
+                    onPressed: () {
+                      _scaffoldKey.currentState!.openEndDrawer();
+                    },
+                  ),
                 ],
               ),
             ),
