@@ -12,7 +12,7 @@ class SpendScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int _bitcoinPrice = Provider.of<WalletInfoProvider>(context).bitcoinPrice;
+    double _bitcoinPrice = Provider.of<WalletInfoProvider>(context).bitcoinPrice;
 
     return Scaffold(
       key: _scaffoldKey,

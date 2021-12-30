@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/wallet_info_provider.dart';
 
 class ProductItem extends StatefulWidget {
   final String id;
@@ -13,19 +16,22 @@ class ProductItem extends StatefulWidget {
 
 class _ProductItemState extends State<ProductItem> {
   int _itemCount = 0;
-    _buyItem() {
-      setState(() {
-        ++_itemCount;
-      });
-    }
+  _buyItem() {
+    setState(() {
+      ++_itemCount;
+    });
+  }
 
-    _sellItem() {
-      setState(() {
-        --_itemCount;
-      });
-    }
+  _sellItem() {
+    setState(() {
+      --_itemCount;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    double _bitcoinPrice = Provider.of<WalletInfoProvider>(context).bitcoinPrice;
+
     return Container(
       width: double.infinity,
       height: 140,
@@ -55,8 +61,7 @@ class _ProductItemState extends State<ProductItem> {
                   SizedBox(height: 10),
                   Text(widget.title),
                   SizedBox(height: 10),
-                  // Text('Price: ₿0.00100000'),
-                  Text('Price: \$${widget.price}'),
+                  Text('Price: ₿${(widget.price / _bitcoinPrice).toStringAsFixed(8)}'),
                 ],
               ),
             ],
