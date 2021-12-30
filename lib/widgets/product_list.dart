@@ -47,16 +47,13 @@ class ProductList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 400,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            // ProductItem(),
-            // ProductItem(),
-            // ProductItem(),
-            // ProductItem(),
-            // ProductItem(),
-            // ProductItem(),
-          ],
+      child: ListView.builder(
+        itemCount: loadedProducts.length,
+        itemBuilder: (ctx, index) => ProductItem(
+          loadedProducts[index].id,
+          loadedProducts[index].title,
+          loadedProducts[index].price,
+          loadedProducts[index].imageUrl,
         ),
       ),
     );

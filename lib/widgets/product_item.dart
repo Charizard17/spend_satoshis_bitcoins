@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class ProductItem extends StatefulWidget {
   final String id;
   final String title;
+  final double price;
   final String imageUrl;
-  ProductItem(this.id, this.title, this.imageUrl);
+  ProductItem(this.id, this.title, this.price, this.imageUrl);
 
   @override
   State<ProductItem> createState() => _ProductItemState();
@@ -48,15 +49,15 @@ class _ProductItemState extends State<ProductItem> {
                 width: 80,
                 height: 80,
                 fit: BoxFit.contain,
-                image: NetworkImage(
-                    'https://www.att.com/idpassets/global/devices/phones/apple/apple-iphone-12-mini/carousel/purple/6009D-1.png'),
+                image: NetworkImage(widget.imageUrl),
               ),
               Column(
                 children: [
                   SizedBox(height: 10),
-                  Text('Cellphone'),
+                  Text(widget.title),
                   SizedBox(height: 10),
-                  Text('Price: ₿0.00100000'),
+                  // Text('Price: ₿0.00100000'),
+                  Text('Price: \$${widget.price}'),
                 ],
               ),
             ],
