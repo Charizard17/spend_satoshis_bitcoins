@@ -13,19 +13,17 @@ class ProductItem extends StatefulWidget {
 
 class _ProductItemState extends State<ProductItem> {
   int _itemCount = 0;
+    _buyItem() {
+      setState(() {
+        ++_itemCount;
+      });
+    }
 
-  _buyItem() {
-    setState(() {
-      ++_itemCount;
-    });
-  }
-
-  _sellItem() {
-    setState(() {
-      --_itemCount;
-    });
-  }
-
+    _sellItem() {
+      setState(() {
+        --_itemCount;
+      });
+    }
   @override
   Widget build(BuildContext context) {
     return Container(

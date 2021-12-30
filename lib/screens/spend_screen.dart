@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/product_list.dart';
 import '../widgets/menu_drawer.dart';
+import '../provider/wallet_info_provider.dart';
+import '../widgets/wallet_infos.dart';
 
 class SpendScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    int _bitcoinPrice = Provider.of<WalletInfoProvider>(context).bitcoinPrice;
+
     return Scaffold(
       key: _scaffoldKey,
       endDrawerEnableOpenDragGesture: false,
@@ -26,10 +31,9 @@ class SpendScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('₿1 = \$50,000'),
-                  // Icon(Icons.menu),
+                  Text('₿1 = \$$_bitcoinPrice'),
                   IconButton(
-                    icon: Icon(Icons.menu),
+                    icon: Icon(Icons.settings),
                     onPressed: () {
                       _scaffoldKey.currentState!.openEndDrawer();
                     },
@@ -38,42 +42,7 @@ class SpendScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            Container(
-              width: 300,
-              margin: const EdgeInsets.all(5.0),
-              padding: const EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                border: Border.all(width: 1, color: Colors.orange),
-              ),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.orange,
-                    backgroundImage: NetworkImage(
-                        'https://personal-financial.com/wp-content/uploads/2020/06/The-day-the-true-false-Satoshi-Nakamoto-received-102-BTC.jpg'),
-                  ),
-                  SizedBox(width: 20),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Icon(
-                              Icons.info,
-                              color: Colors.orange,
-                            ),
-                          ],
-                        ),
-                        Text('Satoshi Nakamoto'),
-                        Text('₿1,125,150'),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            WalletInfos(),
             Divider(
               thickness: 1,
               color: Colors.orange,
