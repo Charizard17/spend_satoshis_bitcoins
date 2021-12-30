@@ -29,7 +29,8 @@ class _ProductItemState extends State<ProductItem> {
     return Container(
       width: double.infinity,
       height: 140,
-      margin: EdgeInsets.symmetric(vertical: 10),
+      // margin: EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
         color: Color.fromARGB(255, 235, 227, 158),
         border: Border.all(

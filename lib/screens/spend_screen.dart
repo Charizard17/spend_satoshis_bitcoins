@@ -5,6 +5,7 @@ import '../widgets/product_list.dart';
 import '../widgets/menu_drawer.dart';
 import '../provider/wallet_info_provider.dart';
 import '../widgets/wallet_infos.dart';
+import '../widgets/ads.dart';
 
 class SpendScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -41,13 +42,13 @@ class SpendScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10),
             WalletInfos(),
             Divider(
               thickness: 1,
               color: Colors.orange,
             ),
             ProductList(),
+            Ads(),
           ],
         ),
       ),
