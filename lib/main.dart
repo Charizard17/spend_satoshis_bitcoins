@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import './screens/spend_screen.dart';
 import './provider/wallet_info_provider.dart';
+import './provider/cart.dart';
 
 void main() {
   runApp(
@@ -10,6 +11,9 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => WalletInfoProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Cart(),
         ),
       ],
       child: MyApp(),

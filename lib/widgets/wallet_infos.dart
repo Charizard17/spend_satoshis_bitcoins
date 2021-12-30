@@ -2,12 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/wallet_info_provider.dart';
+import '../provider/cart.dart';
 
-class WalletInfos extends StatelessWidget {
+class WalletInfos extends StatefulWidget {
+  @override
+  State<WalletInfos> createState() => _WalletInfosState();
+}
+
+class _WalletInfosState extends State<WalletInfos> {
   @override
   Widget build(BuildContext context) {
     double _satoshisBitcoins =
         Provider.of<WalletInfoProvider>(context).satoshisBitcoins;
+    double _bitcoinPrice =
+        Provider.of<WalletInfoProvider>(context).bitcoinPrice;
+    final cart = Provider.of<Cart>(context);
+
+    double _finalAmount =
+        double.parse(_satoshisBitcoins.toStringAsFixed(8)) - double.parse((cart.totalAmount/_bitcoinPrice).toStringAsFixed(8));
+
     return Container(
       width: 300,
       margin: const EdgeInsets.all(5.0),
@@ -37,7 +50,7 @@ class WalletInfos extends StatelessWidget {
                   ],
                 ),
                 Text('Satoshi Nakamoto'),
-                Text('₿$_satoshisBitcoins'),
+                Text('₿$_finalAmount'),
               ],
             ),
           ),

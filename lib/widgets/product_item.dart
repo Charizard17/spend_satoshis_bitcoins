@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/wallet_info_provider.dart';
+import '../provider/cart.dart';
 
 class ProductItem extends StatefulWidget {
   final String id;
@@ -30,7 +31,9 @@ class _ProductItemState extends State<ProductItem> {
 
   @override
   Widget build(BuildContext context) {
-    double _bitcoinPrice = Provider.of<WalletInfoProvider>(context).bitcoinPrice;
+    double _bitcoinPrice =
+        Provider.of<WalletInfoProvider>(context).bitcoinPrice;
+    final cart = Provider.of<Cart>(context, listen: false);
 
     return Container(
       width: double.infinity,
@@ -61,7 +64,8 @@ class _ProductItemState extends State<ProductItem> {
                   SizedBox(height: 10),
                   Text(widget.title),
                   SizedBox(height: 10),
-                  Text('Price: ₿${(widget.price / _bitcoinPrice).toStringAsFixed(8)}'),
+                  Text(
+                      'Price: ₿${(widget.price / _bitcoinPrice).toStringAsFixed(8)}'),
                 ],
               ),
             ],
@@ -100,7 +104,9 @@ class _ProductItemState extends State<ProductItem> {
                     fixedSize: Size(110, 30),
                   ),
                   child: Text('Buy'),
-                  onPressed: _buyItem,
+                  onPressed: () {
+                    cart.buyItem(widget.id, widget.price, widget.title);
+                  },
                 ),
               ],
             ),
