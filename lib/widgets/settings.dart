@@ -4,7 +4,7 @@ import 'package:crypto_font_icons/crypto_font_icons.dart';
 
 import '../provider/currencies.dart';
 
-class MenuDrawer extends StatelessWidget {
+class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currency = Provider.of<Currencies>(context, listen: true);

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/product_list.dart';
-import '../widgets/menu_drawer.dart';
+import '../widgets/settings.dart';
 import '../provider/currencies.dart';
 import '../widgets/wallet_infos.dart';
 import '../widgets/ads.dart';
@@ -19,7 +19,7 @@ class SpendScreen extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       endDrawerEnableOpenDragGesture: false,
-      endDrawer: MenuDrawer(),
+      endDrawer: Settings(),
       body: Padding(
         padding: const EdgeInsets.only(
           top: 40,
