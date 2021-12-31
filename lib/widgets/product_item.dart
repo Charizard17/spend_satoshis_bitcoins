@@ -16,29 +16,30 @@ class ProductItem extends StatefulWidget {
 }
 
 class _ProductItemState extends State<ProductItem> {
-  int _itemCount = 0;
-  _buyItem() {
-    setState(() {
-      ++_itemCount;
-    });
-  }
-
-  _sellItem() {
-    setState(() {
-      --_itemCount;
-    });
-  }
+  int _itemQuantity = 0;
+  int _quantity = 0;
 
   @override
   Widget build(BuildContext context) {
     double _bitcoinPrice =
         Provider.of<WalletInfoProvider>(context).bitcoinPrice;
-    final cart = Provider.of<Cart>(context, listen: false);
+    final cart = Provider.of<Cart>(context, listen: true);
+
+    cart.items.forEach((key, item) {
+      if (item.productId == widget.id) {
+        setState(() {
+          _quantity = item.quantity;
+        });
+      }
+    });
+
+    _sellItem() {
+      cart.sellItem(widget.id, widget.price, widget.title);
+    }
 
     return Container(
       width: double.infinity,
       height: 140,
-      // margin: EdgeInsets.symmetric(vertical: 10),
       margin: EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
         color: Color.fromARGB(255, 235, 227, 158),
@@ -80,7 +81,9 @@ class _ProductItemState extends State<ProductItem> {
                     fixedSize: Size(110, 30),
                   ),
                   child: Text('Sell'),
-                  onPressed: _itemCount > 0 ? _sellItem : null,
+                  onPressed: () {
+                    cart.sellItem(widget.id, widget.price, widget.title);
+                  },
                 ),
                 Expanded(
                   child: Container(
@@ -94,7 +97,8 @@ class _ProductItemState extends State<ProductItem> {
                       ),
                     ),
                     child: Center(
-                      child: Text('$_itemCount'),
+                      child:
+                          Text('${_quantity > 0 ? _quantity : _itemQuantity}'),
                     ),
                   ),
                 ),
