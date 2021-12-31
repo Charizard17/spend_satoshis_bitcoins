@@ -24,7 +24,7 @@ class Settings extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.refresh),
             title: Text('Get latest price'),
-            onTap: () {},
+            onTap: currency.getLatestPrice,
           ),
           ListTile(
             leading: _isDollar == true
