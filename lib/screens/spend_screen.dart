@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../widgets/product_list.dart';
 import '../widgets/menu_drawer.dart';
-import '../provider/wallet_info_provider.dart';
+import '../provider/currencies.dart';
 import '../widgets/wallet_infos.dart';
 import '../widgets/ads.dart';
 
@@ -12,7 +12,7 @@ class SpendScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _bitcoinPrice = Provider.of<WalletInfoProvider>(context).bitcoinPrice;
+    double _bitcoinPrice = Provider.of<Currencies>(context).bitcoinPrice;
 
     return Scaffold(
       key: _scaffoldKey,

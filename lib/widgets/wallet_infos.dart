@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/wallet_info_provider.dart';
+import '../provider/currencies.dart';
 import '../provider/cart.dart';
 
 class WalletInfos extends StatefulWidget {
@@ -13,9 +13,9 @@ class _WalletInfosState extends State<WalletInfos> {
   @override
   Widget build(BuildContext context) {
     double _satoshisBitcoins =
-        Provider.of<WalletInfoProvider>(context).satoshisBitcoins;
+        Provider.of<Currencies>(context).satoshisBitcoins;
     double _bitcoinPrice =
-        Provider.of<WalletInfoProvider>(context).bitcoinPrice;
+        Provider.of<Currencies>(context).bitcoinPrice;
     final cart = Provider.of<Cart>(context);
 
     double _finalAmount =

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './screens/spend_screen.dart';
-import './provider/wallet_info_provider.dart';
+import 'provider/currencies.dart';
 import './provider/cart.dart';
 
 void main() {
@@ -10,7 +10,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => WalletInfoProvider(),
+          create: (_) => Currencies(),
         ),
         ChangeNotifierProvider(
           create: (_) => Cart(),
