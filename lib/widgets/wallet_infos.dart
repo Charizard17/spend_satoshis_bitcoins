@@ -12,14 +12,13 @@ class WalletInfos extends StatefulWidget {
 class _WalletInfosState extends State<WalletInfos> {
   @override
   Widget build(BuildContext context) {
-    double _satoshisBitcoins =
-        Provider.of<Currencies>(context).satoshisBitcoins;
-    double _bitcoinPrice =
-        Provider.of<Currencies>(context).bitcoinPrice;
     final cart = Provider.of<Cart>(context);
-
-    double _finalAmount =
-        double.parse(_satoshisBitcoins.toStringAsFixed(8)) - double.parse((cart.totalAmount/_bitcoinPrice).toStringAsFixed(8));
+    final currency = Provider.of<Currencies>(context, listen: true);
+    bool _isDollar = currency.isDollar;
+    double _satoshisBitcoins = currency.satoshisBitcoins;
+    double _bitcoinPrice = currency.bitcoinPrice;
+    double _finalAmount = double.parse(_satoshisBitcoins.toStringAsFixed(8)) -
+        double.parse((cart.totalAmount / _bitcoinPrice).toStringAsFixed(8));
 
     return Container(
       width: 300,
@@ -50,7 +49,9 @@ class _WalletInfosState extends State<WalletInfos> {
                   ],
                 ),
                 Text('Satoshi Nakamoto'),
-                Text('₿$_finalAmount'),
+                _isDollar == true
+                    ? Text('\$${_finalAmount * _bitcoinPrice}')
+                    : Text('₿$_finalAmount'),
               ],
             ),
           ),

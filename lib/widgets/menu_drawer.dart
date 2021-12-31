@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/currencies.dart';
 
 class MenuDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final currency = Provider.of<Currencies>(context, listen: true);
+
     return Drawer(
       child: Column(
         children: [
@@ -19,7 +24,7 @@ class MenuDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.attach_money),
             title: Text('Change currency ₿ <=> \$'),
-            onTap: () {},
+            onTap: currency.changeCurrency,
           ),
         ],
       ),

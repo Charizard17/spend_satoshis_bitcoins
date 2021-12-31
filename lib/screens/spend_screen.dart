@@ -12,7 +12,9 @@ class SpendScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _bitcoinPrice = Provider.of<Currencies>(context).bitcoinPrice;
+    final currency = Provider.of<Currencies>(context, listen: true);
+    double _bitcoinPrice = currency.bitcoinPrice;
+    bool _isDollar = currency.isDollar;
 
     return Scaffold(
       key: _scaffoldKey,

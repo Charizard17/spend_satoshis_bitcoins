@@ -21,8 +21,9 @@ class _ProductItemState extends State<ProductItem> {
 
   @override
   Widget build(BuildContext context) {
-    double _bitcoinPrice =
-        Provider.of<Currencies>(context).bitcoinPrice;
+    final currency = Provider.of<Currencies>(context, listen: true);
+    bool _isDollar = currency.isDollar;
+    double _bitcoinPrice = currency.bitcoinPrice;
     final cart = Provider.of<Cart>(context, listen: true);
 
     cart.items.forEach((key, item) {
@@ -65,8 +66,10 @@ class _ProductItemState extends State<ProductItem> {
                   SizedBox(height: 10),
                   Text(widget.title),
                   SizedBox(height: 10),
-                  Text(
-                      'Price: ₿${(widget.price / _bitcoinPrice).toStringAsFixed(8)}'),
+                  _isDollar == true
+                      ? Text('Price: \$${widget.price}')
+                      : Text(
+                          'Price: ₿${(widget.price / _bitcoinPrice).toStringAsFixed(8)}'),
                 ],
               ),
             ],
