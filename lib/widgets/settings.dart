@@ -16,6 +16,9 @@ class Settings extends StatelessWidget {
           AppBar(
             title: Text('Settings'),
             backgroundColor: Colors.orange,
+            actions: [
+              Container(),
+            ],
           ),
           Divider(),
           ListTile(
