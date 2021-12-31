@@ -81,9 +81,11 @@ class _ProductItemState extends State<ProductItem> {
                     fixedSize: Size(110, 30),
                   ),
                   child: Text('Sell'),
-                  onPressed: () {
-                    cart.sellItem(widget.id, widget.price, widget.title);
-                  },
+                  onPressed: _quantity > 0
+                      ? () {
+                          cart.sellItem(widget.id, widget.price, widget.title);
+                        }
+                      : null,
                 ),
                 Expanded(
                   child: Container(
