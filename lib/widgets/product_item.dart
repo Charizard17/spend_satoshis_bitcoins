@@ -40,9 +40,9 @@ class _ProductItemState extends State<ProductItem> {
 
     return Container(
       width: double.infinity,
-      height: 140,
+      height: 145,
       margin: EdgeInsets.only(bottom: 15),
-      padding: EdgeInsets.symmetric(horizontal: 5),
+      padding: EdgeInsets.only(left: 5, right: 5, top: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Theme.of(context).backgroundColor,
@@ -66,7 +66,10 @@ class _ProductItemState extends State<ProductItem> {
               Column(
                 children: [
                   SizedBox(height: 10),
-                  Text(widget.title),
+                  Text(
+                    widget.title,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
                   SizedBox(height: 10),
                   _isDollar == true
                       ? Text('Price: \$${widget.price}')
