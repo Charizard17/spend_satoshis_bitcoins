@@ -40,7 +40,13 @@ class _SpendScreenState extends State<SpendScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('₿1 = \$$_bitcoinPrice'),
+                  Text(
+                    '₿1 = \$$_bitcoinPrice',
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
                   IconButton(
                     icon: Icon(Icons.settings),
                     onPressed: () {

@@ -26,13 +26,14 @@ class _WalletInfosState extends State<WalletInfos> {
       padding: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
         color: Theme.of(context).backgroundColor,
-        border: Border.all(width: 1, color: Colors.orange),
+        border: Border.all(width: 2, color: Theme.of(context).primaryColor),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
         children: [
           CircleAvatar(
             radius: 40,
-            backgroundColor: Colors.orange,
+            backgroundColor: Theme.of(context).primaryColor,
             backgroundImage: NetworkImage(
                 'https://personal-financial.com/wp-content/uploads/2020/06/The-day-the-true-false-Satoshi-Nakamoto-received-102-BTC.jpg'),
           ),
