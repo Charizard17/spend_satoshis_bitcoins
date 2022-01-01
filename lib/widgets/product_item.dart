@@ -61,7 +61,7 @@ class _ProductItemState extends State<ProductItem> {
                 width: 80,
                 height: 80,
                 fit: BoxFit.contain,
-                image: NetworkImage(widget.imageUrl),
+                image: AssetImage(widget.imageUrl),
               ),
               Column(
                 children: [
