@@ -68,7 +68,10 @@ class _ProductItemState extends State<ProductItem> {
                   SizedBox(height: 10),
                   Text(
                     widget.title,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: 10),
                   _isDollar == true

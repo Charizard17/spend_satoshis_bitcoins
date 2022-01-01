@@ -21,7 +21,7 @@ class _WalletInfosState extends State<WalletInfos> {
         double.parse((cart.totalAmount / _bitcoinPrice).toStringAsFixed(8));
 
     return Container(
-      width: 330,
+      width: 350,
       margin: const EdgeInsets.all(5.0),
       padding: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
@@ -40,20 +40,26 @@ class _WalletInfosState extends State<WalletInfos> {
           Expanded(
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Icon(
-                      Icons.info,
-                      color: Colors.orange,
-                    ),
-                  ],
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   children: [
+                //     Icon(
+                //       Icons.info,
+                //       color: Colors.orange,
+                //     ),
+                //   ],
+                // ),
+                Text(
+                  'Satoshi Nakamoto\'s wallet',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                Text('Satoshi Nakamoto\'s'),
-                Text('Wallet'),
+                SizedBox(height: 10),
                 _isDollar == true
                     ? Text('\$${_finalAmount * _bitcoinPrice}')
-                    : Text('₿$_finalAmount'),
+                    : Text('₿${_finalAmount.toStringAsFixed(8)}'),
               ],
             ),
           ),
