@@ -21,25 +21,18 @@ class _SpendScreenState extends State<SpendScreen> {
     double _bitcoinPrice = currency.bitcoinPrice;
     bool _isDollar = currency.isDollar;
 
-    @override
-    void initState() {
-      super.initState();
-      SchedulerBinding.instance?.addPostFrameCallback((_) {
-        currency.getLatestPrice;
-      });
-    }
-
     return Scaffold(
       key: _scaffoldKey,
       endDrawerEnableOpenDragGesture: false,
       endDrawer: Settings(),
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.only(
           top: 40,
           right: 10,
           bottom: 20,
           left: 10,
         ),
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: Column(
           children: [
             Container(
@@ -58,10 +51,7 @@ class _SpendScreenState extends State<SpendScreen> {
               ),
             ),
             WalletInfos(),
-            Divider(
-              thickness: 1,
-              color: Colors.orange,
-            ),
+            SizedBox(height: 10),
             ProductList(),
             // Ads(),
           ],

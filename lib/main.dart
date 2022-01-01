@@ -29,7 +29,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Spend Satoshi\'s Money',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.orange,
+        accentColor: Colors.black,
+        scaffoldBackgroundColor: Colors.grey[200],
+        backgroundColor: Colors.white,
+        disabledColor: Colors.redAccent,
+        textTheme: TextTheme(
+          headline1: TextStyle(color: Colors.red),
+        ),
       ),
       home: SpendScreen(),
     );

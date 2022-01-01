@@ -42,10 +42,12 @@ class _ProductItemState extends State<ProductItem> {
       width: double.infinity,
       height: 140,
       margin: EdgeInsets.only(bottom: 15),
+      padding: EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 235, 227, 158),
+        borderRadius: BorderRadius.circular(10),
+        color: Theme.of(context).backgroundColor,
         border: Border.all(
-          width: 1,
+          width: 3,
           color: Colors.orange,
         ),
       ),
@@ -77,33 +79,44 @@ class _ProductItemState extends State<ProductItem> {
           Padding(
             padding: const EdgeInsets.all(3),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.red,
+                    primary: Theme.of(context).disabledColor,
+                    onSurface: Theme.of(context).disabledColor,
                     fixedSize: Size(110, 30),
                   ),
-                  child: Text('Sell'),
+                  child: Text(
+                    'Sell',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
                   onPressed: _quantity > 0
                       ? () {
                           cart.sellItem(widget.id, widget.price, widget.title);
                         }
                       : null,
                 ),
-                Expanded(
-                  child: Container(
-                    height: 35,
-                    margin: EdgeInsets.symmetric(horizontal: 3),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(
-                        width: 1,
-                        color: Colors.purple,
-                      ),
+                Container(
+                  height: 35,
+                  width: 110,
+                  margin: EdgeInsets.symmetric(horizontal: 3),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(4),
+                    border: Border.all(
+                      width: 1,
+                      color: Theme.of(context).primaryColor,
                     ),
-                    child: Center(
-                      child:
-                          Text('${_quantity > 0 ? _quantity : _itemQuantity}'),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '${_quantity > 0 ? _quantity : _itemQuantity}',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ),
@@ -112,7 +125,12 @@ class _ProductItemState extends State<ProductItem> {
                     primary: Colors.green,
                     fixedSize: Size(110, 30),
                   ),
-                  child: Text('Buy'),
+                  child: Text(
+                    'Buy',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
                   onPressed: () {
                     cart.buyItem(widget.id, widget.price, widget.title);
                   },
