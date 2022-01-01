@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './screens/spend_screen.dart';
-import 'provider/currencies.dart';
+import './provider/currencies.dart';
 import './provider/cart.dart';
+import './provider/products.dart';
 
 void main() {
   runApp(
@@ -14,6 +15,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => Cart(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Products(),
         ),
       ],
       child: MyApp(),
