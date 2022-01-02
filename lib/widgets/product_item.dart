@@ -25,6 +25,7 @@ class _ProductItemState extends State<ProductItem> {
     bool _isDollar = currency.isDollar;
     double _bitcoinPrice = currency.bitcoinPrice;
     final cart = Provider.of<Cart>(context, listen: true);
+    double _satoshisBitcoins = cart.satoshisBitcoins;
 
     cart.items.forEach((key, item) {
       if (item.productId == widget.id) {
@@ -33,10 +34,6 @@ class _ProductItemState extends State<ProductItem> {
         });
       }
     });
-
-    _sellItem() {
-      cart.sellItem(widget.id, widget.price, widget.title);
-    }
 
     return Container(
       width: double.infinity,
@@ -101,7 +98,8 @@ class _ProductItemState extends State<ProductItem> {
                   ),
                   onPressed: _quantity > 0
                       ? () {
-                          cart.sellItem(widget.id, widget.price, widget.title);
+                          cart.sellItem(widget.id, widget.price, widget.title,
+                              _bitcoinPrice);
                         }
                       : null,
                 ),
@@ -129,6 +127,7 @@ class _ProductItemState extends State<ProductItem> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: Colors.green,
+                    onSurface: Colors.green,
                     fixedSize: Size(110, 30),
                   ),
                   child: Text(
@@ -137,9 +136,12 @@ class _ProductItemState extends State<ProductItem> {
                       fontSize: 16,
                     ),
                   ),
-                  onPressed: () {
-                    cart.buyItem(widget.id, widget.price, widget.title);
-                  },
+                  onPressed: _satoshisBitcoins > widget.price / _bitcoinPrice
+                      ? () {
+                          cart.buyItem(widget.id, widget.price, widget.title,
+                              _bitcoinPrice);
+                        }
+                      : null,
                 ),
               ],
             ),

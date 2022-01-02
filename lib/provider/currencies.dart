@@ -5,10 +5,8 @@ import 'package:http/http.dart' as http;
 
 class Currencies with ChangeNotifier {
   var isDollar = false;
-  double _satoshisBitcoins = 1125150;
   late double _bitcoinPrice = 50000;
 
-  double get satoshisBitcoins => _satoshisBitcoins;
   double get bitcoinPrice => _bitcoinPrice;
 
   void changeCurrency() {

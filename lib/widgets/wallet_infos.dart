@@ -15,10 +15,8 @@ class _WalletInfosState extends State<WalletInfos> {
     final cart = Provider.of<Cart>(context);
     final currency = Provider.of<Currencies>(context, listen: true);
     bool _isDollar = currency.isDollar;
-    double _satoshisBitcoins = currency.satoshisBitcoins;
+    double _satoshisBitcoins = cart.satoshisBitcoins;
     double _bitcoinPrice = currency.bitcoinPrice;
-    double _finalAmount = double.parse(_satoshisBitcoins.toStringAsFixed(8)) -
-        double.parse((cart.totalAmount / _bitcoinPrice).toStringAsFixed(8));
 
     return Container(
       width: 350,
@@ -59,8 +57,8 @@ class _WalletInfosState extends State<WalletInfos> {
                 ),
                 SizedBox(height: 10),
                 _isDollar == true
-                    ? Text('\$${_finalAmount * _bitcoinPrice}')
-                    : Text('₿${_finalAmount.toStringAsFixed(8)}'),
+                    ? Text('\$${_satoshisBitcoins * _bitcoinPrice}')
+                    : Text('₿${_satoshisBitcoins.toStringAsFixed(8)}'),
               ],
             ),
           ),

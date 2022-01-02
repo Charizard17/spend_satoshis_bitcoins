@@ -18,10 +18,13 @@ class CartItem {
 
 class Cart with ChangeNotifier {
   Map<String, CartItem> _items = {};
+  double _satoshisBitcoins = 1125150;
 
   Map<String, CartItem> get items {
     return {..._items};
   }
+
+  double get satoshisBitcoins => _satoshisBitcoins;
 
   double get totalAmount {
     var total = 0.0;
@@ -37,6 +40,7 @@ class Cart with ChangeNotifier {
     String productId,
     double price,
     String title,
+    double bitcoinPrice,
   ) {
     if (_items.containsKey(productId)) {
       // change quantity
@@ -50,6 +54,7 @@ class Cart with ChangeNotifier {
           quantity: existingCartItem.quantity + 1,
         ),
       );
+      _satoshisBitcoins -= price / bitcoinPrice;
     } else {
       _items.putIfAbsent(
         productId,
@@ -61,6 +66,7 @@ class Cart with ChangeNotifier {
           quantity: 1,
         ),
       );
+      _satoshisBitcoins -= price / bitcoinPrice;
     }
     notifyListeners();
   }
@@ -69,6 +75,7 @@ class Cart with ChangeNotifier {
     String productId,
     double price,
     String title,
+    double bitcoinPrice,
   ) {
     if (_items.containsKey(productId)) {
       // change quantity
@@ -82,6 +89,7 @@ class Cart with ChangeNotifier {
           quantity: existingCartItem.quantity - 1,
         ),
       );
+      _satoshisBitcoins += price / bitcoinPrice;
     }
     notifyListeners();
   }
