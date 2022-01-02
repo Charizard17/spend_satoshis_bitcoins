@@ -115,7 +115,7 @@ class Products with ChangeNotifier {
     Product(
       id: 'p19',
       title: 'Formula 1 Car',
-      price: 15000000000.00,
+      price: 15000000.00,
       imageUrl: 'assets/images/formula-1-car.png',
     ),
     Product(
