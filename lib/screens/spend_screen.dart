@@ -39,7 +39,7 @@ class _SpendScreenState extends State<SpendScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '₿1 = \$$_bitcoinPrice',
+                    '₿ 1 = \$ $_bitcoinPrice',
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
