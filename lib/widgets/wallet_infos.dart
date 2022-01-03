@@ -17,6 +17,13 @@ class _WalletInfosState extends State<WalletInfos> {
     bool _isDollar = currency.isDollar;
     double _satoshisBitcoins = cart.satoshisBitcoins;
     double _bitcoinPrice = currency.bitcoinPrice;
+    double satoshisBitcoinsInDollar = _satoshisBitcoins * _bitcoinPrice;
+    double satoshisBitcoinsInBitcoin = _satoshisBitcoins;
+
+    int productPriceBitcoins = int.parse(
+        satoshisBitcoinsInBitcoin.toStringAsFixed(8).toString().split(".")[0]);
+    int productPriceSatoshis = int.parse(
+        satoshisBitcoinsInBitcoin.toStringAsFixed(8).toString().split(".")[1]);
 
     return Container(
       width: 350,
@@ -49,16 +56,41 @@ class _WalletInfosState extends State<WalletInfos> {
                 //   ],
                 // ),
                 Text(
-                  'Satoshi Nakamoto\'s wallet',
+                  'Satoshi Nakamoto\'s Bitcoins',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 10),
-                _isDollar == true
-                    ? Text('\$${_satoshisBitcoins * _bitcoinPrice}')
-                    : Text('₿${_satoshisBitcoins.toStringAsFixed(8)}'),
+                SizedBox(height: 6),
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                    children: [
+                      TextSpan(text: '₿ '),
+                      TextSpan(
+                        text: '$productPriceBitcoins',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                        text: '.$productPriceSatoshis',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // Text(
+                //   _isDollar == true
+                //       ? '\$${_satoshisBitcoins * _bitcoinPrice}'
+                //       : '₿${_satoshisBitcoins.toStringAsFixed(8)}',
+                //   style: TextStyle(fontSize: 18),
+                // ),
               ],
             ),
           ),
