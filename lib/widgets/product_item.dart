@@ -71,10 +71,12 @@ class _ProductItemState extends State<ProductItem> {
                     ),
                   ),
                   SizedBox(height: 10),
-                  _isDollar == true
-                      ? Text('Price: \$${widget.price}')
-                      : Text(
-                          'Price: ₿${(widget.price / _bitcoinPrice).toStringAsFixed(8)}'),
+                  Text(
+                    _isDollar == true
+                        ? 'Price: \$${widget.price}'
+                        : 'Price: ₿${(widget.price / _bitcoinPrice).toStringAsFixed(8)}',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ],
               ),
             ],
