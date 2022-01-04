@@ -192,10 +192,9 @@ class Products with ChangeNotifier {
     ),
   ];
 
-  // Products(this._products);
-
   List<Product> get products {
-    _products.shuffle();
+    // _products.shuffle();
+    _products.sort((a, b) => a.price.compareTo(b.price));
     return [..._products];
   }
 }
