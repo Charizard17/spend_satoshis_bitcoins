@@ -17,6 +17,7 @@ class ProductList extends StatelessWidget {
           loadedProducts[index].title,
           loadedProducts[index].price,
           loadedProducts[index].imageUrl,
+          loadedProducts[index].unique,
         ),
       ),
     );

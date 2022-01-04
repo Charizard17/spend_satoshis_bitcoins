@@ -9,14 +9,15 @@ class ProductItem extends StatefulWidget {
   final String title;
   final double price;
   final String imageUrl;
-  ProductItem(this.id, this.title, this.price, this.imageUrl);
+  final bool unique;
+
+  ProductItem(this.id, this.title, this.price, this.imageUrl, this.unique);
 
   @override
   State<ProductItem> createState() => _ProductItemState();
 }
 
 class _ProductItemState extends State<ProductItem> {
-  int _itemQuantity = 0;
   int _quantity = 0;
 
   @override
@@ -119,7 +120,7 @@ class _ProductItemState extends State<ProductItem> {
                   ),
                   child: Center(
                     child: Text(
-                      '${_quantity > 0 ? _quantity : _itemQuantity}',
+                      '${_quantity > 0 ? _quantity : 0}',
                       style: TextStyle(
                         fontSize: 16,
                       ),
@@ -138,6 +139,8 @@ class _ProductItemState extends State<ProductItem> {
                       fontSize: 16,
                     ),
                   ),
+                  // unique item (Mona Lisa) check must be added...
+                  // if unique item, widget.unique property will be true
                   onPressed: _satoshisBitcoins > widget.price / _bitcoinPrice
                       ? () {
                           cart.buyItem(widget.id, widget.price, widget.title,
