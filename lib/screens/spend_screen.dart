@@ -5,6 +5,7 @@ import '../widgets/product_list.dart';
 import '../widgets/settings.dart';
 import '../provider/currencies.dart';
 import '../widgets/wallet_infos.dart';
+import '../widgets/recipe.dart';
 
 class SpendScreen extends StatefulWidget {
   @override
@@ -12,6 +13,13 @@ class SpendScreen extends StatefulWidget {
 }
 
 class _SpendScreenState extends State<SpendScreen> {
+  int _currentIndex = 0;
+
+  final tabs = [
+    ProductList(),
+    Recipe(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -56,9 +64,34 @@ class _SpendScreenState extends State<SpendScreen> {
             ),
             WalletInfos(),
             SizedBox(height: 10),
-            ProductList(),
+            tabs[_currentIndex],
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        iconSize: 25,
+        selectedFontSize: 16,
+        unselectedFontSize: 13,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_grocery_store),
+            label: 'Products',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.receipt_long_rounded),
+            label: 'Recipe',
+          ),
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
     );
   }
