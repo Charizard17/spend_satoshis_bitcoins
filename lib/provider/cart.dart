@@ -89,6 +89,7 @@ class Cart with ChangeNotifier {
           quantity: existingCartItem.quantity - 1,
         ),
       );
+      _items.removeWhere((key, item) => item.quantity == 0);
       _satoshisBitcoins += price / bitcoinPrice;
     }
     notifyListeners();
