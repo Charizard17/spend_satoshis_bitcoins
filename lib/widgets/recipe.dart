@@ -16,21 +16,23 @@ class Recipe extends StatelessWidget {
 
     var rows = <TableRow>[];
     _cartItems.forEach(((key, value) {
-      rows.add(TableRow(
-        children: [
-          Text('${value.title}'),
-          Text('x${value.quantity}'),
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            alignment: Alignment.centerLeft,
-            child: Text(
-              _isDollar == true
-                  ? '\$ ${(value.quantity * value.price).toStringAsFixed(2)}'
-                  : '₿ ${(value.quantity * value.price / _bitcoinPrice).toStringAsFixed(8)}',
+      if (value.quantity != 0) {
+        rows.add(TableRow(
+          children: [
+            Text('${value.title}'),
+            Text('x${value.quantity}'),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: Text(
+                _isDollar == true
+                    ? '\$ ${(value.quantity * value.price).toStringAsFixed(2)}'
+                    : '₿ ${(value.quantity * value.price / _bitcoinPrice).toStringAsFixed(8)}',
+              ),
             ),
-          ),
-        ],
-      ));
+          ],
+        ));
+      }
     }));
 
     return Container(
