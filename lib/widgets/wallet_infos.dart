@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,11 +38,14 @@ class _WalletInfosState extends State<WalletInfos> {
       ),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 40,
-            backgroundColor: Theme.of(context).primaryColor,
-            backgroundImage: NetworkImage(
-                'https://personal-financial.com/wp-content/uploads/2020/06/The-day-the-true-false-Satoshi-Nakamoto-received-102-BTC.jpg'),
+          Transform(
+            alignment: Alignment.center,
+            transform: Matrix4.rotationY(math.pi),
+            child: CircleAvatar(
+              radius: 40,
+              backgroundColor: Theme.of(context).primaryColor,
+              backgroundImage: AssetImage('assets/satoshi-nakamoto.png'),
+            ),
           ),
           SizedBox(width: 20),
           Expanded(
