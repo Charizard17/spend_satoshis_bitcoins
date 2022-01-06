@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/product_list.dart';
-import '../widgets/settings.dart';
 import '../provider/currencies.dart';
 import '../widgets/wallet_infos.dart';
 import '../widgets/recipe.dart';
@@ -29,8 +28,6 @@ class _SpendScreenState extends State<SpendScreen> {
 
     return Scaffold(
       key: _scaffoldKey,
-      endDrawerEnableOpenDragGesture: false,
-      endDrawer: Settings(),
       body: Container(
         padding: const EdgeInsets.only(
           top: 40,
@@ -41,27 +38,6 @@ class _SpendScreenState extends State<SpendScreen> {
         color: Theme.of(context).scaffoldBackgroundColor,
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '₿ 1 = \$ $_bitcoinPrice',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.settings),
-                    onPressed: () {
-                      _scaffoldKey.currentState!.openEndDrawer();
-                    },
-                  ),
-                ],
-              ),
-            ),
             WalletInfos(),
             SizedBox(height: 10),
             tabs[_currentIndex],
