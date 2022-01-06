@@ -24,7 +24,7 @@ class _HeaderState extends State<Header> {
         children: [
           TextButton.icon(
             label: Text(
-              '₿ 1 = \$ $_bitcoinPrice',
+              '₿ 1 = \$ ${_bitcoinPrice.toStringAsFixed(0)}',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
