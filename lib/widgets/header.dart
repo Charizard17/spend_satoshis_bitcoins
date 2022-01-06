@@ -58,8 +58,8 @@ class _HeaderState extends State<Header> {
               activeColor: Theme.of(context).accentColor,
               inactiveTrackColor:
                   Theme.of(context).primaryColor.withOpacity(0.6),
-              activeThumbImage: AssetImage('assets/dollar.png'),
-              inactiveThumbImage: AssetImage('assets/bitcoin.png'),
+              activeThumbImage: AssetImage('assets/images/dollar.png'),
+              inactiveThumbImage: AssetImage('assets/images/bitcoin.png'),
               value: value,
               onChanged: (value) {
                 setState(() {

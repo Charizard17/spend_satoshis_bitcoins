@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(
-                'assets/satoshi-nakamoto.png',
+                'assets/images/satoshi-nakamoto.png',
               ),
               Padding(
                 padding:

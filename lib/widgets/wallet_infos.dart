@@ -44,22 +44,13 @@ class _WalletInfosState extends State<WalletInfos> {
             child: CircleAvatar(
               radius: 40,
               backgroundColor: Theme.of(context).primaryColor,
-              backgroundImage: AssetImage('assets/satoshi-nakamoto.png'),
+              backgroundImage: AssetImage('assets/images/satoshi-nakamoto.png'),
             ),
           ),
           SizedBox(width: 20),
           Expanded(
             child: Column(
               children: [
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.end,
-                //   children: [
-                //     Icon(
-                //       Icons.info,
-                //       color: Colors.orange,
-                //     ),
-                //   ],
-                // ),
                 Text(
                   'Satoshi Nakamoto\'s Bitcoins',
                   style: TextStyle(
