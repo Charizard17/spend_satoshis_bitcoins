@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey[200],
         backgroundColor: Colors.white,
         disabledColor: Colors.redAccent,
+        fontFamily: 'Revamped',
       ),
       home: HomeScreen(),
       routes: {

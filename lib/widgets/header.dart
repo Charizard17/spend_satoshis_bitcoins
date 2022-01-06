@@ -27,8 +27,9 @@ class _HeaderState extends State<Header> {
               '₿ 1 = \$ $_bitcoinPrice',
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 17,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
+                fontFamily: 'Raleway',
               ),
             ),
             icon: Icon(

@@ -52,10 +52,19 @@ class _WalletInfosState extends State<WalletInfos> {
             child: Column(
               children: [
                 Text(
-                  'Satoshi Nakamoto\'s Bitcoins',
+                  'Satoshi Nakamoto\'s',
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Revamped',
+                  ),
+                ),
+                Text(
+                  'Bitcoins',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Revamped',
                   ),
                 ),
                 SizedBox(height: 6),
@@ -64,6 +73,7 @@ class _WalletInfosState extends State<WalletInfos> {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
+                      fontFamily: 'Raleway',
                     ),
                     children: [
                       TextSpan(text: '₿ '),

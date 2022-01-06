@@ -19,8 +19,20 @@ class Recipe extends StatelessWidget {
       if (value.quantity != 0) {
         rows.add(TableRow(
           children: [
-            Text('${value.title}'),
-            Text('x${value.quantity}'),
+            Text(
+              '${value.title}',
+              style: TextStyle(
+                fontSize: 17,
+                fontFamily: 'Raleway',
+              ),
+            ),
+            Text(
+              'x${value.quantity}',
+              style: TextStyle(
+                fontSize: 17,
+                fontFamily: 'Raleway',
+              ),
+            ),
             FittedBox(
               fit: BoxFit.scaleDown,
               alignment: Alignment.centerLeft,
@@ -28,6 +40,10 @@ class Recipe extends StatelessWidget {
                 _isDollar == true
                     ? '\$ ${(value.quantity * value.price).toStringAsFixed(2)}'
                     : '₿ ${(value.quantity * value.price / _bitcoinPrice).toStringAsFixed(8)}',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontFamily: 'Raleway',
+                ),
               ),
             ),
           ],
@@ -43,8 +59,9 @@ class Recipe extends StatelessWidget {
           Text(
             'Your Receipt',
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 21,
               fontWeight: FontWeight.bold,
+              fontFamily: 'Raleway',
             ),
           ),
           SizedBox(height: 10),
@@ -52,7 +69,7 @@ class Recipe extends StatelessWidget {
             columnWidths: {
               0: FlexColumnWidth(3),
               1: FlexColumnWidth(1),
-              2: FlexColumnWidth(2),
+              2: FlexColumnWidth(3),
             },
             children: [
               for (var row in rows) row,
@@ -61,7 +78,7 @@ class Recipe extends StatelessWidget {
           Divider(thickness: 1, color: Colors.black),
           Table(
             columnWidths: {
-              0: FlexColumnWidth(3),
+              0: FlexColumnWidth(2),
               1: FlexColumnWidth(3),
             },
             children: [
@@ -69,13 +86,21 @@ class Recipe extends StatelessWidget {
                 children: [
                   Text(
                     'TOTAL',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      fontFamily: 'Raleway',
+                    ),
                   ),
                   Text(
                     _isDollar == true
                         ? '\$ ${_totalAmount}'
                         : '₿ ${(_totalAmount / _bitcoinPrice).toStringAsFixed(8)}',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      fontFamily: 'Raleway',
+                    ),
                   ),
                 ],
               ),

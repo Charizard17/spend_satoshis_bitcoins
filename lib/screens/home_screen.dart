@@ -26,7 +26,11 @@ class HomeScreen extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                 child: RichText(
                   text: TextSpan(
-                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: 'Raleway',
+                    ),
                     children: [
                       TextSpan(
                         text: 'According to a report by Whale Alert, ',
@@ -72,6 +76,7 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
+                    fontFamily: 'Revamped',
                   ),
                 ),
                 style: ElevatedButton.styleFrom(

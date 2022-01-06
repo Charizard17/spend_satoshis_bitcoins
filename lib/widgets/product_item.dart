@@ -67,8 +67,9 @@ class _ProductItemState extends State<ProductItem> {
                   Text(
                     widget.title,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'Raleway',
                     ),
                   ),
                   SizedBox(height: 10),
@@ -76,7 +77,10 @@ class _ProductItemState extends State<ProductItem> {
                     _isDollar == true
                         ? 'Price: \$${widget.price}'
                         : 'Price: ₿${(widget.price / _bitcoinPrice).toStringAsFixed(8)}',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'Raleway',
+                    ),
                   ),
                 ],
               ),
@@ -97,6 +101,7 @@ class _ProductItemState extends State<ProductItem> {
                     'Sell',
                     style: TextStyle(
                       fontSize: 16,
+                      fontFamily: 'Revamped',
                     ),
                   ),
                   onPressed: _quantity > 0
@@ -122,7 +127,8 @@ class _ProductItemState extends State<ProductItem> {
                     child: Text(
                       '${_quantity > 0 ? _quantity : 0}',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 20,
+                        fontFamily: 'Raleway',
                       ),
                     ),
                   ),
@@ -137,6 +143,7 @@ class _ProductItemState extends State<ProductItem> {
                     'Buy',
                     style: TextStyle(
                       fontSize: 16,
+                      fontFamily: 'Revamped',
                     ),
                   ),
                   // unique item (Mona Lisa) check must be added...
