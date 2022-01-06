@@ -31,21 +31,21 @@ class _SpendScreenState extends State<SpendScreen> {
 
     return Scaffold(
       key: _scaffoldKey,
-      body: Container(
-        padding: const EdgeInsets.only(
-          top: 40,
-          right: 10,
-          bottom: 20,
-          left: 10,
-        ),
-        color: Theme.of(context).scaffoldBackgroundColor,
-        child: Column(
-          children: [
-            Header(),
-            WalletInfos(),
-            SizedBox(height: 10),
-            tabs[_currentIndex],
-          ],
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.only(
+            right: 10,
+            left: 10,
+          ),
+          color: Theme.of(context).scaffoldBackgroundColor,
+          child: Column(
+            children: [
+              Header(),
+              WalletInfos(),
+              SizedBox(height: 10),
+              tabs[_currentIndex],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
