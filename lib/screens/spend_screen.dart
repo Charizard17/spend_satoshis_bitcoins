@@ -8,6 +8,8 @@ import '../widgets/recipe.dart';
 import '../widgets/header.dart';
 
 class SpendScreen extends StatefulWidget {
+  static const routeName = '/spend-screen';
+
   @override
   State<SpendScreen> createState() => _SpendScreenState();
 }

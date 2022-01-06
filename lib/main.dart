@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './screens/spend_screen.dart';
+import './screens/home_screen.dart';
 import './provider/currencies.dart';
 import './provider/cart.dart';
 import './provider/products.dart';
@@ -39,7 +40,11 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.white,
         disabledColor: Colors.redAccent,
       ),
-      home: SpendScreen(),
+      home: HomeScreen(),
+      routes: {
+        HomeScreen.routeName: (ctx) => HomeScreen(),
+        SpendScreen.routeName: (ctx) => SpendScreen(),
+      },
     );
   }
 }
