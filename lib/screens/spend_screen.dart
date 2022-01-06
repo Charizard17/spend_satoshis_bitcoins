@@ -5,6 +5,7 @@ import '../widgets/product_list.dart';
 import '../provider/currencies.dart';
 import '../widgets/wallet_infos.dart';
 import '../widgets/recipe.dart';
+import '../widgets/header.dart';
 
 class SpendScreen extends StatefulWidget {
   @override
@@ -38,6 +39,7 @@ class _SpendScreenState extends State<SpendScreen> {
         color: Theme.of(context).scaffoldBackgroundColor,
         child: Column(
           children: [
+            Header(),
             WalletInfos(),
             SizedBox(height: 10),
             tabs[_currentIndex],
