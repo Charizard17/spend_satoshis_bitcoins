@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                   text: TextSpan(
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 17,
                       fontFamily: 'Raleway',
                     ),
                     children: [

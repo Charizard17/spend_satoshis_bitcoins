@@ -27,6 +27,8 @@ class _ProductItemState extends State<ProductItem> {
     double _bitcoinPrice = currency.bitcoinPrice;
     final cart = Provider.of<Cart>(context, listen: true);
     double _satoshisBitcoins = cart.satoshisBitcoins;
+    final dollarFormat = currency.dollarFormat;
+    final bitcoinFormat = currency.bitcoinFormat;
 
     cart.items.forEach((key, item) {
       if (item.productId == widget.id) {
@@ -75,8 +77,8 @@ class _ProductItemState extends State<ProductItem> {
                   SizedBox(height: 10),
                   Text(
                     _isDollar == true
-                        ? 'Price: \$${widget.price}'
-                        : 'Price: ₿${(widget.price / _bitcoinPrice).toStringAsFixed(8)}',
+                        ? 'Price: \$ ${dollarFormat.format(widget.price)}'
+                        : 'Price: ₿ ${bitcoinFormat.format(widget.price / _bitcoinPrice)}',
                     style: TextStyle(
                       fontSize: 18,
                       fontFamily: 'Raleway',
@@ -95,7 +97,7 @@ class _ProductItemState extends State<ProductItem> {
                   style: ElevatedButton.styleFrom(
                     primary: Theme.of(context).disabledColor,
                     onSurface: Theme.of(context).disabledColor,
-                    fixedSize: Size(110, 30),
+                    fixedSize: Size(100, 25),
                   ),
                   child: Text(
                     'Sell',
@@ -113,13 +115,13 @@ class _ProductItemState extends State<ProductItem> {
                 ),
                 Container(
                   height: 35,
-                  width: 110,
+                  width: 100,
                   margin: EdgeInsets.symmetric(horizontal: 3),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(4),
                     border: Border.all(
-                      width: 1,
+                      width: 2,
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
@@ -137,7 +139,7 @@ class _ProductItemState extends State<ProductItem> {
                   style: ElevatedButton.styleFrom(
                     primary: Colors.green,
                     onSurface: Colors.green,
-                    fixedSize: Size(110, 30),
+                    fixedSize: Size(100, 25),
                   ),
                   child: Text(
                     'Buy',

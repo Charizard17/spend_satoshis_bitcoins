@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -6,6 +7,8 @@ import 'package:http/http.dart' as http;
 class Currencies with ChangeNotifier {
   var isDollar = false;
   late double _bitcoinPrice = 50000;
+  final dollarFormat = new NumberFormat("#,##0.00", "en_US");
+  final bitcoinFormat = new NumberFormat("##0.00000000", "en_US");
 
   double get bitcoinPrice => _bitcoinPrice;
 

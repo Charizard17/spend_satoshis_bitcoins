@@ -13,6 +13,8 @@ class Recipe extends StatelessWidget {
     var _cartItems = cart.items;
     bool _isDollar = currency.isDollar;
     double _bitcoinPrice = currency.bitcoinPrice;
+    final dollarFormat = currency.dollarFormat;
+    final bitcoinFormat = currency.bitcoinFormat;
 
     var rows = <TableRow>[];
     _cartItems.forEach(((key, value) {
@@ -38,8 +40,8 @@ class Recipe extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 _isDollar == true
-                    ? '\$ ${(value.quantity * value.price).toStringAsFixed(2)}'
-                    : '₿ ${(value.quantity * value.price / _bitcoinPrice).toStringAsFixed(8)}',
+                    ? '\$ ${dollarFormat.format(value.quantity * value.price)}'
+                    : '₿ ${bitcoinFormat.format(value.quantity * value.price / _bitcoinPrice)}',
                 style: TextStyle(
                   fontSize: 17,
                   fontFamily: 'Raleway',
@@ -54,59 +56,61 @@ class Recipe extends StatelessWidget {
     return Container(
       height: 400,
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Column(
-        children: [
-          Text(
-            'Your Receipt',
-            style: TextStyle(
-              fontSize: 21,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Raleway',
-            ),
-          ),
-          SizedBox(height: 10),
-          Table(
-            columnWidths: {
-              0: FlexColumnWidth(3),
-              1: FlexColumnWidth(1),
-              2: FlexColumnWidth(3),
-            },
-            children: [
-              for (var row in rows) row,
-            ],
-          ),
-          Divider(thickness: 1, color: Colors.black),
-          Table(
-            columnWidths: {
-              0: FlexColumnWidth(2),
-              1: FlexColumnWidth(3),
-            },
-            children: [
-              TableRow(
-                children: [
-                  Text(
-                    'TOTAL',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: 'Raleway',
-                    ),
-                  ),
-                  Text(
-                    _isDollar == true
-                        ? '\$ ${_totalAmount}'
-                        : '₿ ${(_totalAmount / _bitcoinPrice).toStringAsFixed(8)}',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: 'Raleway',
-                    ),
-                  ),
-                ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(
+              'Your Receipt',
+              style: TextStyle(
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Raleway',
               ),
-            ],
-          ),
-        ],
+            ),
+            SizedBox(height: 10),
+            Table(
+              columnWidths: {
+                0: FlexColumnWidth(3),
+                1: FlexColumnWidth(1),
+                2: FlexColumnWidth(3),
+              },
+              children: [
+                for (var row in rows) row,
+              ],
+            ),
+            Divider(thickness: 1, color: Colors.black),
+            Table(
+              columnWidths: {
+                0: FlexColumnWidth(2),
+                1: FlexColumnWidth(3),
+              },
+              children: [
+                TableRow(
+                  children: [
+                    Text(
+                      'TOTAL',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: 'Raleway',
+                      ),
+                    ),
+                    Text(
+                      _isDollar == true
+                          ? '\$ ${dollarFormat.format(_totalAmount)}'
+                          : '₿ ${bitcoinFormat.format(_totalAmount / _bitcoinPrice)}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: 'Raleway',
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 import '../provider/currencies.dart';
 import '../provider/cart.dart';
@@ -19,13 +20,8 @@ class _WalletInfosState extends State<WalletInfos> {
     bool _isDollar = currency.isDollar;
     double _satoshisBitcoins = cart.satoshisBitcoins;
     double _bitcoinPrice = currency.bitcoinPrice;
-    double satoshisBitcoinsInDollar = _satoshisBitcoins * _bitcoinPrice;
-    double satoshisBitcoinsInBitcoin = _satoshisBitcoins;
-
-    int productPriceBitcoins = int.parse(
-        satoshisBitcoinsInBitcoin.toStringAsFixed(8).toString().split(".")[0]);
-    int productPriceSatoshis = int.parse(
-        satoshisBitcoinsInBitcoin.toStringAsFixed(8).toString().split(".")[1]);
+    final dollarFormat = currency.dollarFormat;
+    final bitcoinFormat = currency.bitcoinFormat;
 
     return Container(
       width: 350,
@@ -68,35 +64,15 @@ class _WalletInfosState extends State<WalletInfos> {
                   ),
                 ),
                 SizedBox(height: 6),
-                RichText(
-                  text: TextSpan(
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontFamily: 'Raleway',
-                    ),
-                    children: [
-                      TextSpan(text: '₿ '),
-                      TextSpan(
-                        text: '$productPriceBitcoins',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(
-                        text: '.$productPriceSatoshis',
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: Colors.black87,
-                        ),
-                      ),
-                    ],
+                Text(
+                  _isDollar == true
+                      ? '\$ ${dollarFormat.format(_satoshisBitcoins * _bitcoinPrice)}'
+                      : '₿ ${bitcoinFormat.format(_satoshisBitcoins)}',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'Raleway',
                   ),
                 ),
-                // Text(
-                //   _isDollar == true
-                //       ? '\$${_satoshisBitcoins * _bitcoinPrice}'
-                //       : '₿${_satoshisBitcoins.toStringAsFixed(8)}',
-                //   style: TextStyle(fontSize: 18),
-                // ),
               ],
             ),
           ),
