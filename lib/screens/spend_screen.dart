@@ -37,7 +37,16 @@ class _SpendScreenState extends State<SpendScreen> {
             right: 10,
             left: 10,
           ),
-          color: Theme.of(context).scaffoldBackgroundColor,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Colors.white,
+                Colors.grey.withOpacity(0.5),
+              ],
+            ),
+          ),
           child: Column(
             children: [
               Header(),

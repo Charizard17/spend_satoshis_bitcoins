@@ -31,10 +31,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currency = Provider.of<Currencies>(context, listen: true);
+    bool _isDollar = currency.isDollar;
+
     return MaterialApp(
       title: 'Spend Satoshi\'s Money',
       theme: ThemeData(
-        primaryColor: Colors.orange,
+        primaryColor: _isDollar == false ? Colors.orange : Colors.green,
         accentColor: Colors.green,
         scaffoldBackgroundColor: Colors.grey[200],
         backgroundColor: Colors.white,

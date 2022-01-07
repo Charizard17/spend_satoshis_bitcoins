@@ -47,8 +47,8 @@ class _ProductItemState extends State<ProductItem> {
         borderRadius: BorderRadius.circular(10),
         color: Theme.of(context).backgroundColor,
         border: Border.all(
-          width: 3,
-          color: Colors.orange,
+          width: 2,
+          color: Theme.of(context).primaryColor,
         ),
       ),
       child: Column(
@@ -98,6 +98,10 @@ class _ProductItemState extends State<ProductItem> {
                     primary: Theme.of(context).disabledColor,
                     onSurface: Theme.of(context).disabledColor,
                     fixedSize: Size(100, 25),
+                    side: BorderSide(
+                      width: 1,
+                      color: Colors.grey,
+                    ),
                   ),
                   child: Text(
                     'Sell',
@@ -140,6 +144,10 @@ class _ProductItemState extends State<ProductItem> {
                     primary: Colors.green,
                     onSurface: Colors.green,
                     fixedSize: Size(100, 25),
+                    side: BorderSide(
+                      width: 1,
+                      color: Colors.grey,
+                    ),
                   ),
                   child: Text(
                     'Buy',

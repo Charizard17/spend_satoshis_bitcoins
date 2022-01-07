@@ -16,6 +16,16 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Colors.white,
+                Colors.grey.withOpacity(0.5),
+              ],
+            ),
+          ),
           child: Column(
             children: [
               Image.asset(
@@ -67,8 +77,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text:
-                            ' ₿itcoins up to block 54,316 in the chain. ',
+                        text: ' ₿itcoins up to block 54,316 in the chain. ',
                       ),
                       TextSpan(
                         text: 'Source',

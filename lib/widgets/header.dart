@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:crypto_font_icons/crypto_font_icons.dart';
 
 import '../provider/currencies.dart';
 
@@ -16,7 +15,8 @@ class _HeaderState extends State<Header> {
     final currency = Provider.of<Currencies>(context, listen: true);
     double _bitcoinPrice = currency.bitcoinPrice;
 
-    return Expanded(
+    return Container(
+      height: 70,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
