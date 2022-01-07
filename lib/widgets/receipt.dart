@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../provider/cart.dart';
 import '../provider/currencies.dart';
 
-class Recipe extends StatelessWidget {
+class Receipt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);

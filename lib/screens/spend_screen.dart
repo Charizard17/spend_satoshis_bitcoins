@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../widgets/product_list.dart';
 import '../provider/currencies.dart';
 import '../widgets/wallet_infos.dart';
-import '../widgets/recipe.dart';
+import '../widgets/receipt.dart';
 import '../widgets/header.dart';
 
 class SpendScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _SpendScreenState extends State<SpendScreen> {
 
   final tabs = [
     ProductList(),
-    Recipe(),
+    Receipt(),
   ];
 
   @override
@@ -73,7 +73,7 @@ class _SpendScreenState extends State<SpendScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.receipt_long_rounded),
-            label: 'Recipe',
+            label: 'Receipt',
           ),
         ],
         onTap: (index) {
