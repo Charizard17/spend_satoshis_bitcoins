@@ -33,7 +33,23 @@ class HomeScreen extends StatelessWidget {
                     ),
                     children: [
                       TextSpan(
-                        text: 'According to a report by Whale Alert, ',
+                        text: 'According to a report by ',
+                      ),
+                      TextSpan(
+                        text: 'Whale Alert',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () async {
+                            await launch(
+                              'https://whale-alert.medium.com/the-satoshi-fortune-e49cf73f9a9b',
+                            );
+                          },
+                      ),
+                      TextSpan(
+                        text: ', ',
                       ),
                       TextSpan(
                         text: 'Satoshi Nakamoto',
@@ -52,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       TextSpan(
                         text:
-                            ' tokens up to block 54,316 in the chain, making the person/persons the most productive miner in the world. ',
+                            ' ₿itcoins up to block 54,316 in the chain. ',
                       ),
                       TextSpan(
                         text: 'Source',
@@ -62,8 +78,12 @@ class HomeScreen extends StatelessWidget {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () async {
+                            // await launch(
+                            //   'https://www.cnbctv18.com/cryptocurrency/satoshi-nakamotos-bitcoin-holding-heres-how-much-it-is-worth-now-11608832.htm',
+                            // );
                             await launch(
-                                'https://www.cnbctv18.com/cryptocurrency/satoshi-nakamotos-bitcoin-holding-heres-how-much-it-is-worth-now-11608832.htm');
+                              'https://www.nasdaq.com/articles/whale-alert-identifies-1.125-million-btc-as-satoshis-stash-2020-07-20',
+                            );
                           },
                       ),
                     ],
