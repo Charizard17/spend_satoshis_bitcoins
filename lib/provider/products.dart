@@ -91,7 +91,7 @@ class Products with ChangeNotifier {
     Product(
       id: 'p13',
       title: 'T-shirts',
-      price: 10.00,
+      price: 15.00,
       imageUrl: 'assets/images/product_images/t-shirts.png',
       unique: false,
     ),
@@ -210,7 +210,7 @@ class Products with ChangeNotifier {
     Product(
       id: 'p30',
       title: 'Books',
-      price: 16.00,
+      price: 22.49,
       imageUrl: 'assets/images/product_images/books.png',
       unique: false,
     ),

@@ -10,8 +10,6 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
-  bool value = false;
-
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -39,12 +37,7 @@ class _HeaderState extends State<Header> {
             ),
             onPressed: currency.getLatestPrice,
           ),
-          GestureDetector(
-            child: customSwitch(),
-            onTap: (){
-              print('gesture!');
-            },
-          ),
+          customSwitch(),
         ],
       ),
     );
@@ -61,11 +54,10 @@ class _HeaderState extends State<Header> {
                   Theme.of(context).primaryColor.withOpacity(0.6),
               activeThumbImage: AssetImage('assets/images/dollar.png'),
               inactiveThumbImage: AssetImage('assets/images/bitcoin.png'),
-              value: value,
-              onChanged: (value) {
-                setState(() {
-                  this.value = value;
-                });
+              value: Provider.of<Currencies>(context, listen: false).isDollar,
+              onChanged: (_) {
+                Provider.of<Currencies>(context, listen: false)
+                    .changeCurrency();
               },
             ),
           ),
