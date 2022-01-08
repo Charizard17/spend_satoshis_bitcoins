@@ -34,15 +34,11 @@ class _WalletInfosState extends State<WalletInfos> {
       ),
       child: Row(
         children: [
-          Transform(
-            alignment: Alignment.center,
-            transform: Matrix4.rotationY(math.pi),
-            child: CircleAvatar(
+          CircleAvatar(
               radius: 40,
               backgroundColor: Theme.of(context).primaryColor,
-              backgroundImage: AssetImage('assets/images/satoshi-nakamoto.png'),
+              backgroundImage: AssetImage('assets/images/satoshi-nakamoto-reverse.png'),
             ),
-          ),
           SizedBox(width: 20),
           Expanded(
             child: Column(
