@@ -46,7 +46,7 @@ class _WalletInfosState extends State<WalletInfos> {
                 Text(
                   'Satoshi Nakamoto\'s',
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Revamped',
                   ),
@@ -54,7 +54,7 @@ class _WalletInfosState extends State<WalletInfos> {
                 Text(
                   'Bitcoins',
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Revamped',
                   ),

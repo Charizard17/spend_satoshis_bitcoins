@@ -14,6 +14,7 @@ class _HeaderState extends State<Header> {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     final currency = Provider.of<Currencies>(context, listen: true);
     double _bitcoinPrice = currency.bitcoinPrice;
+    final dollarFormatApi = currency.dollarFormatApi;
 
     return Container(
       height: 70,
@@ -22,7 +23,7 @@ class _HeaderState extends State<Header> {
         children: [
           TextButton.icon(
             label: Text(
-              '₿ 1 = \$ ${_bitcoinPrice.toStringAsFixed(0)}',
+              '₿ 1 = \$ ${dollarFormatApi.format(_bitcoinPrice)}',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
