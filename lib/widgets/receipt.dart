@@ -150,7 +150,15 @@ class _ReceiptState extends State<Receipt> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton(
-              child: Text('Save to Gallery'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black54,
+              ),
+              child: Text(
+                'Save to Gallery',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
               onPressed: () async {
                 final image = await controller.captureFromWidget(
                   widgetToScreenshot(
@@ -169,7 +177,15 @@ class _ReceiptState extends State<Receipt> {
               },
             ),
             ElevatedButton(
-              child: Text('Share receipt'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black54,
+              ),
+              child: Text(
+                'Share receipt',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
               onPressed: () async {
                 final image = await controller.captureFromWidget(
                   widgetToScreenshot(

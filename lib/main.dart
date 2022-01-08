@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Spend Satoshi\'s Money',
       theme: ThemeData(
-        primaryColor: _isDollar == false ? Colors.orange : Colors.green,
+        primaryColor: _isDollar == false ? Color(0xfff69d46) : Color(0xff6cde07),
         accentColor: Colors.green,
         scaffoldBackgroundColor: Colors.grey[200],
         backgroundColor: Colors.white,
