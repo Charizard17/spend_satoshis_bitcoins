@@ -118,17 +118,17 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: 'p17',
-      title: 'Football Club',
+      title: 'Manchester United F.C',
       price: 984131023.75,
       imageUrl: 'assets/images/product_images/manchester-united.png',
-      unique: false,
+      unique: true,
     ),
     Product(
       id: 'p18',
-      title: 'NBA Team',
+      title: 'Los Angeles Lakers',
       price: 5000000000.00,
       imageUrl: 'assets/images/product_images/los-angeles-lakers.png',
-      unique: false,
+      unique: true,
     ),
     Product(
       id: 'p19',
@@ -219,6 +219,13 @@ class Products with ChangeNotifier {
       title: '12.5 kg Gold Bar',
       price: 771123.08,
       imageUrl: 'assets/images/product_images/12-5-kg-gold-bar.png',
+      unique: false,
+    ),
+    Product(
+      id: 'p32',
+      title: 'Cruise Ship',
+      price: 600000000.00,
+      imageUrl: 'assets/images/product_images/cruise-ship.png',
       unique: false,
     ),
   ];
