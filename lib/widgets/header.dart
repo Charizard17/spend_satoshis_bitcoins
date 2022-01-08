@@ -17,7 +17,7 @@ class _HeaderState extends State<Header> {
     final dollarFormatApi = currency.dollarFormatApi;
 
     return Container(
-      height: 70,
+      height: 50,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -63,8 +63,8 @@ class _SpendScreenState extends State<SpendScreen> {
         backgroundColor: Colors.white,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
-        iconSize: 25,
-        selectedFontSize: 16,
+        iconSize: 22,
+        selectedFontSize: 15,
         unselectedFontSize: 13,
         items: [
           BottomNavigationBarItem(
