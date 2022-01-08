@@ -42,6 +42,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_native_splash: ^1.3.3
+
+flutter_native_splash:
+  color: "#f69d46"
+  image: "dev_assets/satoshi_nakamoto_adaptive.png"
+  android: true
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

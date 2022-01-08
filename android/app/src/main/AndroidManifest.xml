@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.spend_satoshis_money">
    <application
-        android:label="spend_satoshis_money"
+        android:label="Satoshi's ₿itcoins"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
