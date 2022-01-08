@@ -8,8 +8,7 @@ class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loadedProducts = Provider.of<Products>(context).products;
-    return Container(
-      height: 420,
+    return Expanded(
       child: ListView.builder(
         itemCount: loadedProducts.length,
         itemBuilder: (ctx, index) => ProductItem(
