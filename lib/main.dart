@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
 
 import './screens/spend_screen.dart';
 import './screens/home_screen.dart';
@@ -8,6 +9,12 @@ import './provider/cart.dart';
 import './provider/products.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   runApp(
     MultiProvider(
       providers: [
@@ -37,7 +44,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Spend Satoshi\'s Money',
       theme: ThemeData(
-        primaryColor: _isDollar == false ? Color(0xfff69d46) : Color(0xff6cde07),
+        primaryColor:
+            _isDollar == false ? Color(0xfff69d46) : Color(0xff6cde07),
         accentColor: Colors.green,
         scaffoldBackgroundColor: Colors.grey[200],
         backgroundColor: Colors.white,
