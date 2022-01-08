@@ -38,6 +38,33 @@ class _ProductItemState extends State<ProductItem> {
       }
     });
 
+    Widget buyButton(variable) => ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.green,
+            onSurface: Colors.green,
+            fixedSize: Size(100, 25),
+            side: BorderSide(
+              width: 1,
+              color: Colors.grey,
+            ),
+          ),
+          child: Text(
+            'Buy',
+            style: TextStyle(
+              fontSize: 16,
+              fontFamily: 'Revamped',
+            ),
+          ),
+          onPressed: variable
+              ? () {
+                  cart.buyItem(
+                      widget.id, widget.price, widget.title, _bitcoinPrice);
+                }
+              : null,
+        );
+
+    (_satoshisBitcoins > widget.price / _bitcoinPrice) && _quantity <= 0;
+
     return Container(
       width: double.infinity,
       height: 145,
@@ -139,32 +166,12 @@ class _ProductItemState extends State<ProductItem> {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
-                    onSurface: Colors.green,
-                    fixedSize: Size(100, 25),
-                    side: BorderSide(
-                      width: 1,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  child: Text(
-                    'Buy',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Revamped',
-                    ),
-                  ),
-                  // unique item (Mona Lisa) check must be added...
-                  // if unique item, widget.unique property will be true
-                  onPressed: _satoshisBitcoins > widget.price / _bitcoinPrice
-                      ? () {
-                          cart.buyItem(widget.id, widget.price, widget.title,
-                              _bitcoinPrice);
-                        }
-                      : null,
-                ),
+                widget.unique == true
+                    ? buyButton(
+                        (_satoshisBitcoins > widget.price / _bitcoinPrice) &&
+                            _quantity <= 0)
+                    : buyButton(
+                        _satoshisBitcoins > widget.price / _bitcoinPrice)
               ],
             ),
           )
