@@ -146,17 +146,24 @@ class _ReceiptState extends State<Receipt> {
             ),
           ],
         ),
+        SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.black54,
+            OutlinedButton.icon(
+              icon: Icon(
+                Icons.save,
+                color: Colors.black,
               ),
-              child: Text(
-                'Save to Gallery',
+              style: OutlinedButton.styleFrom(
+                primary: Colors.black,
+                side: BorderSide(width: 2, color: Colors.black),
+              ),
+              label: Text(
+                'Save',
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: Colors.black,
+                  fontSize: 14,
                 ),
               ),
               onPressed: () async {
@@ -176,14 +183,20 @@ class _ReceiptState extends State<Receipt> {
                 await saveImage(image);
               },
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.black54,
+            OutlinedButton.icon(
+              icon: Icon(
+                Icons.share,
+                color: Colors.black,
               ),
-              child: Text(
-                'Share receipt',
+              style: OutlinedButton.styleFrom(
+                primary: Colors.black,
+                side: BorderSide(width: 2, color: Colors.black),
+              ),
+              label: Text(
+                'Share',
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: Colors.black,
+                  fontSize: 14,
                 ),
               ),
               onPressed: () async {
