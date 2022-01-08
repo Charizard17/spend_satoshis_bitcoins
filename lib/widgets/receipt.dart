@@ -1,10 +1,14 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../provider/cart.dart';
 import '../provider/currencies.dart';
@@ -143,6 +147,7 @@ class _ReceiptState extends State<Receipt> {
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton(
               child: Text('Save to Gallery'),
@@ -163,6 +168,30 @@ class _ReceiptState extends State<Receipt> {
                 await saveImage(image);
               },
             ),
+            ElevatedButton(
+              child: Text('Share receipt'),
+              onPressed: () async {
+                final image = await controller.captureFromWidget(
+                  widgetToScreenshot(
+                    rows,
+                    _isDollar,
+                    dollarFormat,
+                    bitcoinFormat,
+                    _totalAmount,
+                    _bitcoinPrice,
+                    _satoshisBitcoins,
+                  ),
+                );
+                if (image == null) return;
+
+                final tempFormat = new NumberFormat("#,##0", "en_US");
+
+                final spentAmount =
+                    tempFormat.format(_totalAmount / _bitcoinPrice);
+
+                saveAndShare(image, spentAmount);
+              },
+            ),
           ],
         ),
       ],
@@ -179,6 +208,15 @@ class _ReceiptState extends State<Receipt> {
     final name = 'screenshot_$time';
     final result = await ImageGallerySaver.saveImage(bytes, name: name);
     return result['filePath'];
+  }
+
+  Future saveAndShare(Uint8List bytes, spentAmount) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final image = File('${directory.path}/flutter.png');
+    image.writeAsBytesSync(bytes);
+
+    final text = 'I spent $spentAmount ₿itcoins of Satoshi Nakamoto';
+    await Share.shareFiles([image.path], text: text);
   }
 
   Widget widgetToScreenshot(rows, _isDollar, dollarFormat, bitcoinFormat,
