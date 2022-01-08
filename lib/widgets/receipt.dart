@@ -23,6 +23,7 @@ class _ReceiptState extends State<Receipt> {
     final currency = Provider.of<Currencies>(context, listen: true);
     final _totalAmount = cart.totalAmount;
     var _cartItems = cart.items;
+    double _satoshisBitcoins = cart.satoshisBitcoins;
     bool _isDollar = currency.isDollar;
     double _bitcoinPrice = currency.bitcoinPrice;
     final dollarFormat = currency.dollarFormat;
@@ -39,8 +40,9 @@ class _ReceiptState extends State<Receipt> {
               child: Text(
                 '${value.title}',
                 style: TextStyle(
-                  fontSize: 17,
+                  fontSize: 16,
                   fontFamily: 'Raleway',
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -52,8 +54,9 @@ class _ReceiptState extends State<Receipt> {
                 child: Text(
                   'x${value.quantity}',
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 16,
                     fontFamily: 'Raleway',
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -66,8 +69,9 @@ class _ReceiptState extends State<Receipt> {
                     ? '\$ ${dollarFormat.format(value.quantity * value.price)}'
                     : '₿ ${bitcoinFormat.format(value.quantity * value.price / _bitcoinPrice)}',
                 style: TextStyle(
-                  fontSize: 17,
+                  fontSize: 16,
                   fontFamily: 'Raleway',
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -141,9 +145,19 @@ class _ReceiptState extends State<Receipt> {
         Row(
           children: [
             ElevatedButton(
-              child: Text('Share'),
+              child: Text('Save to Gallery'),
               onPressed: () async {
-                final image = await controller.capture();
+                final image = await controller.captureFromWidget(
+                  widgetToScreenshot(
+                    rows,
+                    _isDollar,
+                    dollarFormat,
+                    bitcoinFormat,
+                    _totalAmount,
+                    _bitcoinPrice,
+                    _satoshisBitcoins,
+                  ),
+                );
                 if (image == null) return;
 
                 await saveImage(image);
@@ -166,4 +180,140 @@ class _ReceiptState extends State<Receipt> {
     final result = await ImageGallerySaver.saveImage(bytes, name: name);
     return result['filePath'];
   }
+
+  Widget widgetToScreenshot(rows, _isDollar, dollarFormat, bitcoinFormat,
+          _totalAmount, _bitcoinPrice, _satoshisBitcoins) =>
+      MaterialApp(
+        home: Scaffold(
+          body: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Colors.white,
+                  Colors.grey,
+                ],
+              ),
+            ),
+            child: Column(
+              children: [
+                Container(
+                  width: 350,
+                  margin: const EdgeInsets.all(5.0),
+                  padding: const EdgeInsets.all(3.0),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).backgroundColor,
+                    border: Border.all(
+                        width: 2, color: Theme.of(context).primaryColor),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 25,
+                        backgroundColor: Theme.of(context).primaryColor,
+                        backgroundImage: AssetImage(
+                            'assets/images/satoshi-nakamoto-reverse.png'),
+                      ),
+                      SizedBox(width: 5),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            FittedBox(
+                              fit: BoxFit.scaleDown,
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Satoshi Nakamoto\'s Bitcoins',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Revamped',
+                                ),
+                              ),
+                            ),
+                            Text(
+                              _isDollar == true
+                                  ? '\$ ${dollarFormat.format(_satoshisBitcoins * _bitcoinPrice)}'
+                                  : '₿ ${bitcoinFormat.format(_satoshisBitcoins)}',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'Raleway',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Text(
+                  'Your Receipt',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Raleway',
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(height: 5),
+                Container(
+                  height: 400,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Table(
+                          columnWidths: {
+                            0: FlexColumnWidth(3),
+                            1: FlexColumnWidth(1),
+                            2: FlexColumnWidth(3),
+                          },
+                          children: [
+                            for (var row in rows) row,
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(thickness: 1, color: Colors.black),
+                Table(
+                  columnWidths: {
+                    0: FlexColumnWidth(2),
+                    1: FlexColumnWidth(3),
+                  },
+                  children: [
+                    TableRow(
+                      children: [
+                        Text(
+                          'TOTAL',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            fontFamily: 'Raleway',
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          _isDollar == true
+                              ? '\$ ${dollarFormat.format(_totalAmount)}'
+                              : '₿ ${bitcoinFormat.format(_totalAmount / _bitcoinPrice)}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            fontFamily: 'Raleway',
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
 }
