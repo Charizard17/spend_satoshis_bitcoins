@@ -269,7 +269,7 @@ class _ReceiptState extends State<Receipt> {
     final image = File('${directory.path}/flutter.png');
     image.writeAsBytesSync(bytes);
 
-    final text = spentAmount >= 1 ? 'Heyy, I spent $spentAmount ₿itcoins of Satoshi Nakamoto' : '';
+    final text = 'Heyy, I spent $spentAmount ₿itcoins of Satoshi Nakamoto';
     await Share.shareFiles([image.path], text: text);
   }
 
