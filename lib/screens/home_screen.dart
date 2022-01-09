@@ -32,8 +32,8 @@ class HomeScreen extends StatelessWidget {
                 'assets/images/satoshi-nakamoto.png',
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                padding: const EdgeInsets.only(
+                    top: 20, right: 20, bottom: 10, left: 20),
                 child: RichText(
                   text: TextSpan(
                     style: TextStyle(
@@ -96,6 +96,18 @@ class HomeScreen extends StatelessWidget {
                           },
                       ),
                     ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 0, right: 20, bottom: 20, left: 20),
+                child: Text(
+                  'In this app you have all the ₿itcoins of Satoshi Nakamoto. You can spend them as you wish!',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontFamily: 'Raleway',
                   ),
                 ),
               ),
