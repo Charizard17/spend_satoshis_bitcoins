@@ -63,8 +63,6 @@ class _ProductItemState extends State<ProductItem> {
               : null,
         );
 
-    (_satoshisBitcoins > widget.price / _bitcoinPrice) && _quantity <= 0;
-
     return Container(
       width: double.infinity,
       height: 145,
