@@ -263,6 +263,10 @@ class _ReceiptState extends State<Receipt> {
                   Colors.grey,
                 ],
               ),
+              border: Border.all(
+                width: 3,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
             child: Column(
               children: [
@@ -378,6 +382,32 @@ class _ReceiptState extends State<Receipt> {
                     ),
                   ],
                 ),
+                SizedBox(height: 15),
+                Expanded(
+                  child: Text(
+                    'Congratulations! You have spent %${dollarFormat.format((_totalAmount / _bitcoinPrice) / (_satoshisBitcoins + (_totalAmount / _bitcoinPrice)) * 100)} of Satoshi Nakamoto\'s Bitcoins!',
+                    style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundColor: Theme.of(context).primaryColor,
+                      backgroundImage: AssetImage(
+                        _isDollar == true
+                            ? 'assets/images/dollar.png'
+                            : 'assets/images/bitcoin.png',
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
