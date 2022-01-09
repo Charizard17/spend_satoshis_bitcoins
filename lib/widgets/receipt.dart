@@ -269,7 +269,7 @@ class _ReceiptState extends State<Receipt> {
     final image = File('${directory.path}/flutter.png');
     image.writeAsBytesSync(bytes);
 
-    final text = 'I spent $spentAmount ₿itcoins of Satoshi Nakamoto';
+    final text = spentAmount >= 1 ? 'Heyy, I spent $spentAmount ₿itcoins of Satoshi Nakamoto' : '';
     await Share.shareFiles([image.path], text: text);
   }
 
@@ -410,7 +410,7 @@ class _ReceiptState extends State<Receipt> {
                 SizedBox(height: 15),
                 Expanded(
                   child: Text(
-                    'Congratulations! You have spent %${dollarFormat.format((_totalAmount / _bitcoinPrice) / (_satoshisBitcoins + (_totalAmount / _bitcoinPrice)) * 100)} of Satoshi Nakamoto\'s Bitcoins!',
+                    'You have spent %${dollarFormat.format((_totalAmount / _bitcoinPrice) / (_satoshisBitcoins + (_totalAmount / _bitcoinPrice)) * 100)} of Satoshi Nakamoto\'s Bitcoins!',
                     style: TextStyle(
                       fontFamily: 'Raleway',
                       fontSize: 16,
