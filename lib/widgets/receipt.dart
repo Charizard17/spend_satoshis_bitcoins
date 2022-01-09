@@ -181,6 +181,31 @@ class _ReceiptState extends State<Receipt> {
                 if (image == null) return;
 
                 await saveImage(image);
+
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                    duration: Duration(seconds: 2),
+                    content: Container(
+                      height: 30,
+                      width: 100,
+                      color: Colors.black.withOpacity(0.8),
+                      child: Center(
+                        child: Text(
+                          'Your receipt has been saved in the gallery',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: 'Raleway',
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
               },
             ),
             OutlinedButton.icon(
