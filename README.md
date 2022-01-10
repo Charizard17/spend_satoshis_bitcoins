@@ -1,3 +1,3 @@
-# spend_satoshis_money
+# spend_satoshis_bitcoins
 
 A new Flutter project.

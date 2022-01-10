@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
     bool _isDollar = currency.isDollar;
 
     return MaterialApp(
-      title: 'Spend Satoshi\'s Money',
+      title: 'Spend Satoshi\'s Bitcoins',
       theme: ThemeData(
         primaryColor:
             _isDollar == false ? Color(0xfff69d46) : Color(0xff6cde07),

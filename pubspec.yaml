@@ -1,4 +1,4 @@
-name: spend_satoshis_money
+name: spend_satoshis_bitcoins
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
