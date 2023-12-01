@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../widgets/product_list.dart';
-import '../provider/currencies.dart';
 import '../widgets/wallet_infos.dart';
 import '../widgets/receipt.dart';
 import '../widgets/header.dart';
@@ -25,9 +23,6 @@ class _SpendScreenState extends State<SpendScreen> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-    final currency = Provider.of<Currencies>(context, listen: true);
-    double _bitcoinPrice = currency.bitcoinPrice;
-    bool _isDollar = currency.isDollar;
 
     return Scaffold(
       key: _scaffoldKey,

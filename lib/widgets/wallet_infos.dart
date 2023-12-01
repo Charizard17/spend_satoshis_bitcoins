@@ -1,8 +1,5 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 import '../provider/currencies.dart';
 import '../provider/cart.dart';
@@ -28,17 +25,21 @@ class _WalletInfosState extends State<WalletInfos> {
       margin: const EdgeInsets.all(5.0),
       padding: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
-        color: Theme.of(context).backgroundColor,
-        border: Border.all(width: 2, color: Theme.of(context).primaryColor),
+        color: Theme.of(context).colorScheme.background,
+        border: Border.all(
+          width: 2,
+          color: Theme.of(context).colorScheme.primary,
+        ),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
         children: [
           CircleAvatar(
-              radius: 40,
-              backgroundColor: Theme.of(context).primaryColor,
-              backgroundImage: AssetImage('assets/images/satoshi-nakamoto-reverse.png'),
-            ),
+            radius: 40,
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            backgroundImage:
+                AssetImage('assets/images/satoshi-nakamoto-reverse.png'),
+          ),
           SizedBox(width: 20),
           Expanded(
             child: Column(

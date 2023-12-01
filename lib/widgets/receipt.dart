@@ -156,7 +156,7 @@ class _ReceiptState extends State<Receipt> {
                 color: Colors.black,
               ),
               style: OutlinedButton.styleFrom(
-                primary: Colors.black,
+                foregroundColor: Colors.black,
                 side: BorderSide(width: 2, color: Colors.black),
               ),
               label: Text(
@@ -178,7 +178,6 @@ class _ReceiptState extends State<Receipt> {
                     _satoshisBitcoins,
                   ),
                 );
-                if (image == null) return;
 
                 await saveImage(image);
 
@@ -214,7 +213,7 @@ class _ReceiptState extends State<Receipt> {
                 color: Colors.black,
               ),
               style: OutlinedButton.styleFrom(
-                primary: Colors.black,
+                foregroundColor: Colors.black,
                 side: BorderSide(width: 2, color: Colors.black),
               ),
               label: Text(
@@ -236,7 +235,6 @@ class _ReceiptState extends State<Receipt> {
                     _satoshisBitcoins,
                   ),
                 );
-                if (image == null) return;
 
                 final tempFormat = new NumberFormat("#,##0", "en_US");
 
@@ -290,7 +288,7 @@ class _ReceiptState extends State<Receipt> {
               ),
               border: Border.all(
                 width: 3,
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
             child: Column(
@@ -300,16 +298,16 @@ class _ReceiptState extends State<Receipt> {
                   margin: const EdgeInsets.all(5.0),
                   padding: const EdgeInsets.all(3.0),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).backgroundColor,
+                    color: Theme.of(context).colorScheme.background,
                     border: Border.all(
-                        width: 2, color: Theme.of(context).primaryColor),
+                        width: 2, color: Theme.of(context).colorScheme.primary),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(
                     children: [
                       CircleAvatar(
                         radius: 25,
-                        backgroundColor: Theme.of(context).primaryColor,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
                         backgroundImage: AssetImage(
                             'assets/images/satoshi-nakamoto-reverse.png'),
                       ),
@@ -424,7 +422,7 @@ class _ReceiptState extends State<Receipt> {
                   children: [
                     CircleAvatar(
                       radius: 25,
-                      backgroundColor: Theme.of(context).primaryColor,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
                       backgroundImage: AssetImage(
                         _isDollar == true
                             ? 'assets/images/dollar.png'

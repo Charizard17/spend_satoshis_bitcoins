@@ -44,12 +44,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Spend Satoshi\'s Bitcoins',
       theme: ThemeData(
-        primaryColor:
-            _isDollar == false ? Color(0xfff69d46) : Color(0xff6cde07),
-        accentColor: Colors.green,
         scaffoldBackgroundColor: Colors.grey[200],
-        backgroundColor: Colors.white,
-        disabledColor: Colors.redAccent,
+        colorScheme: ColorScheme(
+          brightness: Brightness.light,
+          primary: _isDollar == false ? Color(0xfff69d46) : Color(0xff6cde07),
+          onPrimary: Colors.brown,
+          secondary: Colors.green,
+          onSecondary: Colors.deepPurple,
+          error: Colors.redAccent,
+          onError: Colors.red,
+          background: Colors.white,
+          onBackground: Colors.blueGrey,
+          surface: Colors.blue,
+          onSurface: Colors.orange,
+        ),
         fontFamily: 'Revamped',
       ),
       home: HomeScreen(),

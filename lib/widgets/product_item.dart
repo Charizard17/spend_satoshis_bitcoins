@@ -40,8 +40,8 @@ class _ProductItemState extends State<ProductItem> {
 
     Widget buyButton(variable) => ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Colors.green,
-            onSurface: Colors.green,
+            backgroundColor: Colors.green,
+            disabledForegroundColor: Colors.green,
             fixedSize: Size(100, 25),
             side: BorderSide(
               width: 1,
@@ -70,10 +70,10 @@ class _ProductItemState extends State<ProductItem> {
       padding: EdgeInsets.only(left: 5, right: 5, top: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).backgroundColor,
+        color: Theme.of(context).colorScheme.background,
         border: Border.all(
           width: 2,
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.primary,
         ),
       ),
       child: Column(
@@ -120,8 +120,9 @@ class _ProductItemState extends State<ProductItem> {
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Theme.of(context).disabledColor,
-                    onSurface: Theme.of(context).disabledColor,
+                    backgroundColor: Theme.of(context).colorScheme.error,
+                    disabledForegroundColor:
+                        Theme.of(context).colorScheme.error,
                     fixedSize: Size(100, 25),
                     side: BorderSide(
                       width: 1,
@@ -151,7 +152,7 @@ class _ProductItemState extends State<ProductItem> {
                     borderRadius: BorderRadius.circular(4),
                     border: Border.all(
                       width: 2,
-                      color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                   child: Center(

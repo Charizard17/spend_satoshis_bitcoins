@@ -11,7 +11,6 @@ class Header extends StatefulWidget {
 class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     final currency = Provider.of<Currencies>(context, listen: true);
     double _bitcoinPrice = currency.bitcoinPrice;
     final dollarFormatApi = currency.dollarFormatApi;
@@ -33,7 +32,7 @@ class _HeaderState extends State<Header> {
             ),
             icon: Icon(
               Icons.refresh,
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.primary,
               size: 30,
             ),
             onPressed: currency.getLatestPrice,
@@ -50,9 +49,9 @@ class _HeaderState extends State<Header> {
           width: 75,
           child: GestureDetector(
             child: Switch(
-              activeColor: Theme.of(context).accentColor,
+              activeColor: Theme.of(context).colorScheme.secondary,
               inactiveTrackColor:
-                  Theme.of(context).primaryColor.withOpacity(0.6),
+                  Theme.of(context).colorScheme.primary.withOpacity(0.6),
               activeThumbImage: AssetImage('assets/images/dollar.png'),
               inactiveThumbImage: AssetImage('assets/images/bitcoin.png'),
               value: Provider.of<Currencies>(context, listen: false).isDollar,

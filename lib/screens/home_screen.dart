@@ -121,7 +121,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                 ),
                 onPressed: () {
                   currency.getLatestPrice();
