@@ -47,19 +47,16 @@ class _HeaderState extends State<Header> {
         scale: 1.5,
         child: SizedBox(
           width: 75,
-          child: GestureDetector(
-            child: Switch(
-              activeColor: Theme.of(context).colorScheme.secondary,
-              inactiveTrackColor:
-                  Theme.of(context).colorScheme.primary.withOpacity(0.6),
-              activeThumbImage: AssetImage('assets/images/dollar.png'),
-              inactiveThumbImage: AssetImage('assets/images/bitcoin.png'),
-              value: Provider.of<Currencies>(context, listen: false).isDollar,
-              onChanged: (_) {
-                Provider.of<Currencies>(context, listen: false)
-                    .changeCurrency();
-              },
-            ),
+          child: Switch(
+            activeColor: Theme.of(context).colorScheme.secondary,
+            inactiveTrackColor:
+                Theme.of(context).colorScheme.primary.withOpacity(0.6),
+            activeThumbImage: AssetImage('assets/images/dollar.png'),
+            inactiveThumbImage: AssetImage('assets/images/bitcoin.png'),
+            value: Provider.of<Currencies>(context, listen: false).isDollar,
+            onChanged: (_) {
+              Provider.of<Currencies>(context, listen: false).changeCurrency();
+            },
           ),
         ),
       );

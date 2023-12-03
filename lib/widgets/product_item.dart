@@ -80,36 +80,41 @@ class _ProductItemState extends State<ProductItem> {
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              SizedBox(width: 20),
               Image(
                 width: 80,
                 height: 80,
                 fit: BoxFit.contain,
                 image: AssetImage(widget.imageUrl),
               ),
-              Column(
-                children: [
-                  SizedBox(height: 10),
-                  Text(
-                    widget.title,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Raleway',
+              Expanded(child: Container()),
+              Container(
+                width: 200,
+                color: Colors.red,
+                child: Column(
+                  children: [
+                    SizedBox(height: 10),
+                    Text(
+                      widget.title,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Raleway',
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    _isDollar == true
-                        ? 'Price: \$ ${dollarFormat.format(widget.price)}'
-                        : 'Price: ₿ ${bitcoinFormat.format(widget.price / _bitcoinPrice)}',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'Raleway',
+                    SizedBox(height: 10),
+                    Text(
+                      _isDollar == true
+                          ? 'Price: \$ ${dollarFormat.format(widget.price)}'
+                          : 'Price: ₿ ${bitcoinFormat.format(widget.price / _bitcoinPrice)}',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'Raleway',
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
