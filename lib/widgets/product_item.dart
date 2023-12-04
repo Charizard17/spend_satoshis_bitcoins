@@ -89,9 +89,8 @@ class _ProductItemState extends State<ProductItem> {
                 image: AssetImage(widget.imageUrl),
               ),
               Expanded(child: Container()),
-              Container(
+              SizedBox(
                 width: 200,
-                color: Colors.red,
                 child: Column(
                   children: [
                     SizedBox(height: 10),
